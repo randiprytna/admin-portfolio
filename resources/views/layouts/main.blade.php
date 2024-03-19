@@ -10,11 +10,11 @@
         <link href="{{ asset('css/loader-dark.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/main-light.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('css/structure-light.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/main-dark.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('css/structure-light.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/structure-dark.css') }}" rel="stylesheet" type="text/css" />
-        <title>Admin - Muhammad Randi Nur Priyatna's Portfolio - Fullstack Developer</title>
-        @yield('css')
+        <title>Admin - Muhammad Randi Nur Priyatna's Portfolio</title>
+        @yield('before-head-end')
     </head>
     <body class="layout-boxed">
         <div id="load_screen"> 
@@ -54,28 +54,28 @@
                         <a href="javascript:void(0);" class="nav-link dropdown-toggle user" id="userProfileDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <div class="avatar-container">
                                 <div class="avatar avatar-sm avatar-indicators avatar-online">
-                                    <img alt="avatar" src="{{ asset('img/profile-30.png') }}" class="rounded-circle">
+                                    <img alt="avatar" src="{{ asset('img/profile-blank.png') }}" class="rounded-circle">
                                 </div>
                             </div>
                         </a>
                         <div class="dropdown-menu position-absolute" aria-labelledby="userProfileDropdown">
                             <div class="user-profile-section">
                                 <div class="media mx-auto">
-                                    <img src="{{ asset('img/profile-30.png') }}" class="img-fluid me-2" alt="avatar">
+                                    <img src="{{ asset('img/profile-blank.png') }}" class="img-fluid me-2" alt="avatar">
                                     <div class="media-body">
-                                        <h5>lala</h5>
-                                        <p>admin</p>
+                                        <h5>@auth {{ auth()->user()->name }} @endauth</h5>
+                                        <p>Super Admin</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="dropdown-item">
-                                <a href="#">
+                                <a href="{{ route('sign-out') }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out">
                                         <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
                                         <polyline points="16 17 21 12 16 7"></polyline>
                                         <line x1="21" y1="12" x2="9" y2="12"></line>
                                     </svg> 
-                                    <span>Log Out</span>
+                                    <span>Sign Out</span>
                                 </a>
                             </div>
                         </div>
@@ -109,53 +109,25 @@
                         </div>
                     </div>
                     <ul class="list-unstyled menu-categories" id="accordionExample">
-                        <li class="menu active">
-                            <a href="#"
-                                aria-expanded="true"
+                        <li class="menu {{ $menuActive === 'dashboard' ? 'active' : '' }}">
+                            <a href="{{ route('dashboard') }}"
+                                aria-expanded="{{ $menuActive === 'dashboard' ? 'true' : 'false' }}"
                                 class="dropdown-toggle">
                                 <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
-                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                                     <span> Dashboard</span>
                                 </div>
                             </a>
                         </li>
-                        <li class="menu active">
-                            <a href="#submenu" data-bs-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                        <li class="menu {{ $menuActive === 'blog' ? 'active' : '' }}">
+                            <a href="{{ route('blog') }}"
+                                aria-expanded="{{ $menuActive === 'blog' ? 'true' : 'false' }}"
+                                class="dropdown-toggle">
                                 <div class="">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-airplay">
-                                        <path
-                                            d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1">
-                                        </path>
-                                        <polygon points="12 15 17 21 7 21 12 15"></polygon>
-                                    </svg>
-                                    <span> Menu 2</span>
-                                </div>
-                                <div>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-chevron-right">
-                                        <polyline points="9 18 15 12 9 6"></polyline>
-                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pen-tool"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                                    <span> Blog</span>
                                 </div>
                             </a>
-                            <ul class="collapse submenu list-unstyled" id="submenu"
-                                data-parent="#accordionExample">
-                                <li>
-                                    <a href="javascript:void(0);"> Submenu 1 </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);"> Submenu 2 </a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -170,10 +142,10 @@
                     </div>
                 </div>
             </div>
-            <script src="{{ asset('js/loader.js') }}"></script>
-            <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-            <script src="{{ asset('js/app.js') }}"></script>
-            @yield('before-body-end')
         </div>
+        <script src="{{ asset('js/loader.js') }}"></script>
+        <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('js/app.js') }}"></script>
+        @yield('before-body-end')
     </body>
 </html>

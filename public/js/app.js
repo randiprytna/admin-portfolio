@@ -304,22 +304,6 @@ var App = function() {
                 document.querySelector('.sidebar-wrapper li.menu.active [aria-expanded="true"]').setAttribute('aria-expanded', 'false');
             }
         },
-        MaterialRippleEffect: function() {
-            getAllBtn = document.querySelectorAll('button.btn, a.btn');
-            
-            getAllBtn.forEach(btn => {
-    
-                if (!btn.classList.contains('_no--effects')) {
-                    btn.classList.add('_effect--ripple');
-                }
-                
-            });
-    
-            if (document.querySelector('._effect--ripple')) {
-                Waves.attach('._effect--ripple', 'waves-light');
-                Waves.init();
-            }
-        }
     }
 
     var _mobileResolution = {
@@ -451,7 +435,6 @@ var App = function() {
             inBuiltfunctionality.bsTooltip();
             inBuiltfunctionality.bsPopover();
             inBuiltfunctionality.onCheckandChangeSidebarActiveClass();
-            inBuiltfunctionality.MaterialRippleEffect();
         }
     }
 

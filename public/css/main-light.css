@@ -3557,6 +3557,7 @@ fieldset:disabled .btn {
 */
 .page-meta {
   margin-top: 25px;
+  margin-bottom: 25px;
 }
 .page-meta .breadcrumb .breadcrumb-item {
   font-size: 17px;

@@ -667,7 +667,7 @@ body .navbar .dark-mode, body:not(.dark) .navbar .dark-mode {
   max-width: 13rem;
   right: -21px;
   left: auto;
-  min-width: 11rem;
+  min-width: 20rem;
 }
 .navbar .navbar-item .nav-item.user-profile-dropdown .dropdown-menu:after {
   border-bottom-color: #b1b2be !important;

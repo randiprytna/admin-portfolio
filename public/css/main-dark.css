@@ -3131,6 +3131,7 @@ body.dark .progress .progress-bar.bg-gradient-dark {
 }
 body.dark .page-meta {
   margin-top: 25px;
+  margin-bottom: 25px;
 }
 body.dark .page-meta .breadcrumb .breadcrumb-item {
   font-size: 17px;
